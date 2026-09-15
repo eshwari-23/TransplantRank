@@ -1,11 +1,9 @@
 {
-  "buildCommand": "npm install --prefix frontend && npm run build --prefix frontend",
-  "outputDirectory": "frontend/dist",
-  "installCommand": "pip install -r requirements.txt",
   "functions": {
     "api/index.py": {
       "maxDuration": 60,
-      "memory": 1024
+      "memory": 1024,
+      "excludeFiles": "{frontend/**,node_modules/**,plots/**,reports/**,*.ipynb,*.csv,*.png,*.json}"
     }
   },
   "rewrites": [
