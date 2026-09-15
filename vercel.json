@@ -1,15 +1,24 @@
 {
-  "functions": {
-    "api/index.py": {
-      "maxDuration": 60,
-      "memory": 1024,
-      "excludeFiles": "{frontend/**,node_modules/**,plots/**,reports/**,*.ipynb,*.csv,*.png,*.json}"
+  "services": {
+    "frontend": {
+      "root": "frontend",
+      "framework": "vite"
+    },
+    "backend": {
+      "root": ".",
+      "entrypoint": "api/index.py"
     }
   },
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/index" },
     { "source": "/match", "destination": "/api/index" },
     { "source": "/predict_survival", "destination": "/api/index" },
-    { "source": "/health", "destination": "/api/index" }
-  ]
+    { "source": "/health", "destination": "/api/index" },
+    { "source": "/(.*)", "destination": "/frontend/$1" }
+  ],
+  "functions": {
+    "api/index.py": {
+      "maxDuration": 60,
+      "memory": 1024
+    }
+  }
 }
