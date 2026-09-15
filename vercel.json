@@ -1,16 +1,5 @@
 {
-  "buildCommand": "npm install --prefix frontend && npm run build --prefix frontend",
+  "buildCommand": "cd frontend && npm install && npm run build",
   "outputDirectory": "frontend/dist",
-  "functions": {
-    "api/index.py": {
-      "maxDuration": 60,
-      "memory": 1024
-    }
-  },
-  "rewrites": [
-    { "source": "/match", "destination": "/api/index" },
-    { "source": "/predict_survival", "destination": "/api/index" },
-    { "source": "/health", "destination": "/api/index" },
-    { "source": "/(.*)", "destination": "/index.html" }
-  ]
+  "framework": "vite"
 }
